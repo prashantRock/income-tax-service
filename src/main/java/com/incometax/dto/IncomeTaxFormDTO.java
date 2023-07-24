@@ -1,58 +1,64 @@
 package com.incometax.dto;
 
+import com.incometax.util.Constant;
+
 public class IncomeTaxFormDTO {
 
-    private String basicSalary = "0";
+    private Double basicSalary = 0.0;
 
-    private String fixedSalary= "0";
+    private Double fixedSalary = 0.0;
 
-    private String houseRentAllowance= "0";
+    private Double houseRentAllowance = 0.0;
 
-    private String flexiSalary= "0";
+    private Double flexiSalary = 0.0;
 
-    private String leaveTravelAllowance= "0";
+    private Double leaveTravelAllowance = 0.0;
 
-    private String taxRegimeOption;
+    private Double dearnessAllowance = 0.0;
 
+    private String taxRegimeOption = Constant.OLD_TAX_REGIME;
 
+    private Integer age = 30;
 
-    public String getBasicSalary() {
+    private Section80DeductionDTO section80DeductionDTO;
+
+    public Double getBasicSalary() {
         return basicSalary;
     }
 
-    public void setBasicSalary(String basicSalary) {
+    public void setBasicSalary(Double basicSalary) {
         this.basicSalary = basicSalary;
     }
 
-    public String getFixedSalary() {
+    public Double getFixedSalary() {
         return fixedSalary;
     }
 
-    public void setFixedSalary(String fixedSalary) {
+    public void setFixedSalary(Double fixedSalary) {
         this.fixedSalary = fixedSalary;
     }
 
-    public String getHouseRentAllowance() {
+    public Double getHouseRentAllowance() {
         return houseRentAllowance;
     }
 
-    public void setHouseRentAllowance(String houseRentAllowance) {
+    public void setHouseRentAllowance(Double houseRentAllowance) {
         this.houseRentAllowance = houseRentAllowance;
     }
 
-    public String getFlexiSalary() {
+    public Double getFlexiSalary() {
         return flexiSalary;
     }
 
-    public void setFlexiSalary(String flexiSalary) {
+    public void setFlexiSalary(Double flexiSalary) {
         this.flexiSalary = flexiSalary;
     }
 
-    public String getLeaveTravelAllowance() {
+    public Double getLeaveTravelAllowance() {
         return leaveTravelAllowance;
     }
 
-    public void setLeaveTravelAllowance(String leaveTravelAllowance) {
+    public void setLeaveTravelAllowance(Double leaveTravelAllowance) {
         this.leaveTravelAllowance = leaveTravelAllowance;
     }
 
@@ -62,5 +68,29 @@ public class IncomeTaxFormDTO {
 
     public void setTaxRegimeOption(String taxRegimeOption) {
         this.taxRegimeOption = taxRegimeOption;
+    }
+
+    public Section80DeductionDTO getSection80DeductionDTO() {
+        return section80DeductionDTO;
+    }
+
+    public void setSection80DeductionDTO(Section80DeductionDTO section80DeductionDTO) {
+        this.section80DeductionDTO = section80DeductionDTO;
+    }
+
+    public Double getDearnessAllowance() {
+        return dearnessAllowance;
+    }
+
+    public void setDearnessAllowance(Double dearnessAllowance) {
+        this.dearnessAllowance = dearnessAllowance;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
