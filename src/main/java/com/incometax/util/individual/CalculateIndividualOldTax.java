@@ -41,8 +41,8 @@ public class CalculateIndividualOldTax {
         return taxAmount;
     }
 
-    public static Double deductSection80Amount(Double taxableIncome, Section80DeductionDTO section80DeductionDTO){
-
+    public static Double deductSection80Amount(Double taxableIncome, IncomeTaxFormDTO incomeTaxDTO){
+        Section80DeductionDTO section80DeductionDTO = incomeTaxDTO.getSection80DeductionDTO();
         if (section80DeductionDTO.getInvestment80C() >= 150000){
             taxableIncome = taxableIncome - 150000;
         } else if(section80DeductionDTO.getInvestment80C() > 0) {

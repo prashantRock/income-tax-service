@@ -16,6 +16,8 @@ public class IncomeTaxFormDTO {
 
     private Double dearnessAllowance = 0.0;
 
+    private Double nationalPensionScheme = 0.0;
+
     private String taxRegimeOption = Constant.OLD_TAX_REGIME;
 
     private Integer age = 30;
@@ -92,5 +94,13 @@ public class IncomeTaxFormDTO {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Double getNationalPensionScheme() {
+        return nationalPensionScheme;
+    }
+
+    public void setNationalPensionScheme(Double nationalPensionScheme) {
+        this.nationalPensionScheme = nationalPensionScheme;
     }
 }

@@ -18,15 +18,15 @@ public class IncomeTaxCalculatorService {
         if (incomeTaxDTO.getTaxRegimeOption().equals(Constant.OLD_TAX_REGIME)){
             if (incomeTaxDTO.getAge() > 80){
                 Double taxableIncome =  CalculateSuperSeniorCitizenOldTax.calculateTaxableIncome(incomeTaxDTO);
-                Double taxableIncomeAfterDeductingSection80 = CalculateSuperSeniorCitizenOldTax.deductSection80Amount(taxableIncome, incomeTaxDTO.getSection80DeductionDTO());
+                Double taxableIncomeAfterDeductingSection80 = CalculateSuperSeniorCitizenOldTax.deductSection80Amount(taxableIncome, incomeTaxDTO);
                 taxAmount =  CalculateSuperSeniorCitizenOldTax.fetchTax(taxableIncomeAfterDeductingSection80);
             } else if (incomeTaxDTO.getAge() > 60){
                 Double taxableIncome =  CalculateSeniorCitizenOldTax.calculateTaxableIncome(incomeTaxDTO);
-                Double taxableIncomeAfterDeductingSection80 = CalculateSeniorCitizenOldTax.deductSection80Amount(taxableIncome, incomeTaxDTO.getSection80DeductionDTO());
+                Double taxableIncomeAfterDeductingSection80 = CalculateSeniorCitizenOldTax.deductSection80Amount(taxableIncome, incomeTaxDTO);
                 taxAmount =  CalculateSeniorCitizenOldTax.fetchTax(taxableIncomeAfterDeductingSection80);
             } else {
                 Double taxableIncome =  CalculateIndividualOldTax.calculateTaxableIncome(incomeTaxDTO);
-                Double taxableIncomeAfterDeductingSection80 = CalculateIndividualOldTax.deductSection80Amount(taxableIncome, incomeTaxDTO.getSection80DeductionDTO());
+                Double taxableIncomeAfterDeductingSection80 = CalculateIndividualOldTax.deductSection80Amount(taxableIncome, incomeTaxDTO);
                 taxAmount =  CalculateIndividualOldTax.fetchTax(taxableIncomeAfterDeductingSection80);
             }
         } else {
