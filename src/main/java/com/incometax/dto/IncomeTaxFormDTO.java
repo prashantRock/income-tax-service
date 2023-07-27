@@ -20,6 +20,8 @@ public class IncomeTaxFormDTO {
 
     private String taxRegimeOption = Constant.OLD_TAX_REGIME;
 
+    private String taxPayer = Constant.INDIVIDUAL;
+
     private Integer age = 30;
 
     private Section80DeductionDTO section80DeductionDTO;
@@ -102,5 +104,13 @@ public class IncomeTaxFormDTO {
 
     public void setNationalPensionScheme(Double nationalPensionScheme) {
         this.nationalPensionScheme = nationalPensionScheme;
+    }
+
+    public String getTaxPayer() {
+        return taxPayer;
+    }
+
+    public void setTaxPayer(String taxPayer) {
+        this.taxPayer = taxPayer;
     }
 }

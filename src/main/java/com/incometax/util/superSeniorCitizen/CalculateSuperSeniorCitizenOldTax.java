@@ -2,6 +2,7 @@ package com.incometax.util.superSeniorCitizen;
 
 import com.incometax.dto.IncomeTaxFormDTO;
 import com.incometax.dto.Section80DeductionDTO;
+import com.incometax.util.Constant;
 
 public class CalculateSuperSeniorCitizenOldTax {
 
@@ -33,9 +34,7 @@ public class CalculateSuperSeniorCitizenOldTax {
     }
 
     public static Double deductSection80Amount(Double taxableIncome, IncomeTaxFormDTO incomeTaxDTO){
-
         Section80DeductionDTO section80DeductionDTO = incomeTaxDTO.getSection80DeductionDTO();
-
         if (section80DeductionDTO.getInvestment80C() >= 150000){
             taxableIncome = taxableIncome - 150000;
         } else if(section80DeductionDTO.getInvestment80C() > 0) {
@@ -66,6 +65,58 @@ public class CalculateSuperSeniorCitizenOldTax {
             taxableIncome = taxableIncome - section80DeductionDTO.getInterestOnEducationLoan80E();
         }
 
+        if (section80DeductionDTO.getInterestOnHomeLoan80EE() >= 50000) {
+            taxableIncome = taxableIncome - 50000;
+        } else if (section80DeductionDTO.getInterestOnHomeLoan80EE() > 0){
+            taxableIncome = taxableIncome - section80DeductionDTO.getInterestOnHomeLoan80EE();
+        }
+
+        if (section80DeductionDTO.getMedicalInsurance80D() > 0) {
+            //Need to work on it
+        }
+
+        if (section80DeductionDTO.getDisabledDependent80DD() >= 125000) {
+            taxableIncome = taxableIncome - 125000;
+        } else if (section80DeductionDTO.getDisabledDependent80DD() > 0){
+            taxableIncome = taxableIncome - section80DeductionDTO.getDisabledDependent80DD();
+        }
+
+        if (section80DeductionDTO.getMedicalExpenditure80DDB() >= 100000) {
+            taxableIncome = taxableIncome - 100000;
+        } else if (section80DeductionDTO.getMedicalExpenditure80DDB() > 0){
+            taxableIncome = taxableIncome - section80DeductionDTO.getMedicalExpenditure80DDB();
+        }
+
+        if (section80DeductionDTO.getPhysicalDisability80U() >= 125000) {
+            taxableIncome = taxableIncome - 125000;
+        } else if (section80DeductionDTO.getPhysicalDisability80U() > 0){
+            taxableIncome = taxableIncome - section80DeductionDTO.getPhysicalDisability80U();
+        }
+
+        if (section80DeductionDTO.getDonations80G() > 0) {
+            //Need to work on it
+        }
+
+        // it is for company so not required for individual
+        if (section80DeductionDTO.getCompanyContribution80GGB() > 0 && incomeTaxDTO.getTaxPayer().equals(Constant.COMPANY)) {
+            taxableIncome = taxableIncome - section80DeductionDTO.getCompanyContribution80GGB();
+        }
+
+        if (section80DeductionDTO.getContributionToPoliticalParties80GGC() > 0) {
+            taxableIncome = taxableIncome - section80DeductionDTO.getContributionToPoliticalParties80GGC();
+        }
+
+        if (section80DeductionDTO.getRoyaltyOfPatent80RRB() >= 300000) {
+            taxableIncome = taxableIncome - 300000;
+        } else if (section80DeductionDTO.getRoyaltyOfPatent80RRB() > 0){
+            taxableIncome = taxableIncome - section80DeductionDTO.getRoyaltyOfPatent80RRB();
+        }
+
+        if (section80DeductionDTO.getInterestIncome80TTB() >= 50000 && incomeTaxDTO.getAge() > 60)  {
+            taxableIncome = taxableIncome - 50000;
+        } else if (section80DeductionDTO.getInterestIncome80TTB() > 0 && incomeTaxDTO.getAge() > 60){
+            taxableIncome = taxableIncome - section80DeductionDTO.getInterestIncome80TTB();
+        }
         return taxableIncome;
 
 
